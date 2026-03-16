@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Ariel Cedric ZONGO</title>
+    <!-- Polices Google : Montserrat pour les titres, Open Sans pour le texte -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables de couleurs calquées sur le modèle visuel */
+        :root {
+            --bg-cream: #f4f2ee; 
+            --blob-grey: #5c5c5c; 
+            --blob-black: #1a1a1a; 
+            --text-dark: #333333;
+            --text-light: #fdfdfd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #d1d1d1;
+            color: var(--text-dark);
+            line-height: 1.5;
+            padding: 40px 20px;
+        }
+
+        /* Conteneur principal simulant la page A4 */
+        .cv-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: var(--bg-cream);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 50px;
+        }
+
+        /* --- CONTENEUR DYNAMIQUE POUR L'EN-TÊTE --- */
+        /* Ce bloc empêche la bulle de déborder sur le contenu en dessous */
+        .header-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        /* --- FORMES ORGANIQUES (BLOBS) --- */
+        .blob-black {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 350px;
+            height: 280px;
+            background-color: var(--blob-black);
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            z-index: 1;
+        }
+
+        .blob-grey {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 88%;
+            /* La bulle prend 100% de la hauteur du wrapper, elle s'adapte au texte ! */
+            height: 100%; 
+            background-color: var(--blob-grey);
+            border-bottom-left-radius: 600px 120px; /* Courbe douce et contrôlée */
+            z-index: 1;
+        }
+
+        /* --- EN-TÊTE (TEXTE & PHOTO) --- */
+        .header {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            align-items: center; 
+            padding: 50px 50px 50px 50px; /* Le padding bas crée l'espace sous le texte */
+            gap: 35px;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 40px 50px 45px 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background-color: #cccccc;
+            flex-shrink: 0;
+        }
+
+        .header-text {
+            color: var(--text-light);
+            flex: 1;
+        }
+
+        .header-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .job-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .summary {
+            font-size: 0.8rem;
+            font-weight: 300;
+            line-height: 1.5;
+            color: #eaeaea;
+            text-align: justify;
+        }
+
+        /* --- CORPS DU CV --- */
+        .main-content {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            padding: 15px 50px 20px 50px;
+            gap: 40px;
+        }
+
+        .left-column {
+            flex: 1;
+            max-width: 32%;
+            text-align: center;
+        }
+
+        .right-column {
+            flex: 2;
+        }
+
+        /* Titres de sections */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 6px; 
+            color: var(--text-dark);
+            text-transform: uppercase;
+            margin: 30px 0 15px 0;
+            text-align: center;
+        }
+
+        .right-column .section-title:first-child,
+        .left-column .section-title:first-child {
+            margin-top: 0; /* Aligne les deux colonnes parfaitement en haut */
+        }
+
+        /* --- STYLES COLONNE GAUCHE --- */
+        ul.no-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.no-bullets li {
+            font-size: 0.85rem;
+            color: #444444;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        ul.no-bullets li.bold-text {
+            font-weight: 600;
+        }
+
+        /* --- STYLES COLONNE DROITE --- */
+        .formation-item {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .formation-item strong {
+            font-weight: 700;
+        }
+
+        .projet-block {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            margin-top: 25px;
+        }
+
+        .projet-left {
+            width: 110px;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .projet-right {
+            flex: 1;
+        }
+
+        .projet-right h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .projet-right ul {
+            padding-left: 15px;
+            font-size: 0.85rem;
+            color: #444;
+        }
+
+        .projet-right ul li {
+            margin-bottom: 4px;
+        }
+
+        /* --- BOUTON D'IMPRESSION --- */
+        .btn-print {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--blob-grey);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-print:hover {
+            background-color: var(--blob-black);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* --- ADAPTATION MOBILE --- */
+        @media screen and (max-width: 768px) {
+            .header { flex-direction: column; padding: 40px 20px; text-align: center; }
+            .header-text { margin-left: 0; }
+            .blob-grey { border-bottom-left-radius: 0; width: 100%; }
+            .main-content { flex-direction: column; padding: 20px; gap: 20px; }
+            .left-column, .right-column { max-width: 100%; text-align: center; }
+            .projet-block { flex-direction: column; gap: 5px; text-align: center; }
+            .projet-left { width: 100%; text-align: center; margin-bottom: 5px; }
+            .projet-right ul { list-style: none; padding-left: 0; }
+            .btn-print { bottom: 15px; right: 15px; padding: 12px 20px; font-size: 0.9rem; }
+        }
+
+        /* --- REGLAGES SPECIFIQUES POUR UNE IMPRESSION PARFAITE SUR 1 PAGE --- */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0 !important; 
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body { background-color: white !important; padding: 0 !important; margin: 0 !important; }
+
+            .cv-container {
+                box-shadow: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+
+            /* Compactage léger pour l'impression A4 */
+            .header { padding: 45px 40px 30px 40px !important; gap: 30px !important; }
+            .profile-pic { width: 150px !important; height: 150px !important; }
+            .blob-grey { border-bottom-left-radius: 500px 100px !important; }
+            
+            .header-text h1 { font-size: 1.8rem !important; margin-bottom: 5px !important; }
+            .job-title { font-size: 0.8rem !important; margin-bottom: 6px !important; }
+            .summary { font-size: 0.75rem !important; line-height: 1.4 !important; }
+
+            .main-content { padding: 15px 40px !important; gap: 30px !important; }
+            .section-title { margin: 15px 0 10px 0 !important; font-size: 0.95rem !important; }
+            
+            ul.no-bullets li { font-size: 0.8rem !important; margin-bottom: 6px !important; }
+            .formation-item { font-size: 0.8rem !important; margin-bottom: 8px !important; }
+            .projet-block { margin-top: 15px !important; margin-bottom: 15px !important; }
+            .projet-left { font-size: 0.75rem !important; width: 90px !important; }
+            .projet-right h4 { font-size: 0.85rem !important; margin-bottom: 2px !important; }
+            .projet-right ul { font-size: 0.8rem !important; }
+
+            .btn-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bouton d'impression -->
+<button class="btn-print" onclick="window.print()">
+    <i class="fas fa-print"></i> 
+</button>
+
+<div class="cv-container">
+    
+    <!-- CONTENEUR DYNAMIQUE EN-TÊTE -->
+    <div class="header-wrapper">
+        <!-- Formes organiques d'arrière-plan -->
+        <div class="blob-black"></div>
+        <div class="blob-grey"></div>
+        
+        <header class="header">
+            <img src="img/pp.jpg" alt="Ariel Cedric ZONGO" class="profile-pic" onerror="this.src='https://via.placeholder.com/190x190.png?text=Photo';">
+            <div class="header-text">
+                <h1>ARIEL CEDRIC<br>ZONGO</h1>
+                <div class="job-title">Ingénieur en technologie du génie informatique (étudiant)</div>
+                <p class="summary">
+                    Étudiant en Licence Technologie du Génie Informatique à l’Université Aube Nouvelle, je suis passionné par les innovations numériques et les technologies émergentes. Curieux, rigoureux et très motivé, j’ai développé des compétences solides en développement web, administration systèmes et réseaux, ainsi qu’en gestion de bases de données. Je suis à la recherche d’opportunités me permettant d’approfondir mes connaissances.
+                </p>
+            </div>
+        </header>
+    </div>
+
+    <!-- CORPS DU CV -->
+    <main class="main-content">
+        
+        <!-- COLONNE GAUCHE -->
+        <aside class="left-column">
+            
+            <div class="section-title">CONTACT</div>
+            <ul class="no-bullets">
+                <li>Ouagadougou</li>
+                <li>arielcedricstark@gmail.com</li>
+                <li>+226 64 38 28 60</li>
+            </ul>
+
+            <div class="section-title">COMPÉTENCES</div>
+            <ul class="no-bullets">
+                <li>Développement Web</li>
+                <li>Gestion bases de données</li>
+                <li>Administration Systèmes</li>
+            </ul>
+
+            <div class="section-title">LANGUES</div>
+            <ul class="no-bullets">
+                <li class="bold-text">Français (Courant)</li>
+                <li>Anglais (Débutant)</li>
+                <li>Mooré (Langue maternelle)</li>
+            </ul>
+
+            <div class="section-title">QUALITÉS</div>
+            <ul class="no-bullets">
+                <li>Curiosité & Créativité</li>
+                <li>Rigueur & Motivation</li>
+            </ul>
+
+            <div class="section-title">TECHNIQUES</div>
+            <ul class="no-bullets">
+                <li>HTML / CSS / PHP</li>
+                <li>Python / C / C++ / C#</li>
+                <li>MySQL / NoSQL / Oracle</li>
+                <li>Windows / Linux</li>
+                <li>Word / Excel / PowerPoint</li>
+            </ul>
+
+        </aside>
+
+        <!-- COLONNE DROITE -->
+        <div class="right-column">
+            
+            <div class="section-title">FORMATION</div>
+            
+            <div class="formation-item">
+                <strong>2026</strong> – Licence en technologie du génie informatique – Université Aube Nouvelle
+            </div>
+            <div class="formation-item">
+                <strong>2023</strong> – Baccalauréat scientifique série D – Centre Professionnel de Formation Polytechnique
+            </div>
+            <div class="formation-item">
+                <strong>2022</strong> – Brevet d’Etude Professionnel – Lycée Professionnel National Maurice YAMEOGO de KOUDOUGOU
+            </div>
+            <div class="formation-item">
+                <strong>2019</strong> – Brevet d’Études du Premier Cycle – Lycée Communal de KOUDOUGOU
+            </div>
+            <div class="formation-item">
+                <strong>2015</strong> – Certificat d’Études Primaires – École Prive Evangelique 1
+            </div>
+
+            <div class="section-title">PROJETS</div>
+            
+            <div class="projet-block">
+                <div class="projet-right">
+                    <h4>ECOSYS</h4>
+                    <ul>
+                        <li>Simulateur écologique représentant un écosystème</li>
+                        <li>Fonction : site responsive et professionnel</li>
+                        <li>Technologies : Python, Pygame</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
