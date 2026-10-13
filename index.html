@@ -195,6 +195,7 @@
 
         .projet-block {
             display: flex;
+            flex-wrap: wrap;
             gap: 20px;
             margin-bottom: 25px;
             margin-top: 25px;
@@ -210,7 +211,8 @@
         }
 
         .projet-right {
-            flex: 1;
+            flex: 1 1 45%;
+            min-width: 200px;
         }
 
         .projet-right h4 {
@@ -230,6 +232,25 @@
 
         .projet-right ul li {
             margin-bottom: 4px;
+        }
+
+        .projet-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--blob-grey);
+            text-transform: uppercase;
+            margin: 18px 0 6px 0;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #d8d5cf;
+        }
+
+        .projet-tech {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 12px;
         }
 
         /* --- BOUTON D'IMPRESSION --- */
@@ -429,7 +450,72 @@
                         <li>Technologies : HTML/CSS</li>
                     </ul>
                 </div>
+
+                <div class="projet-right">
+                    <h4>ReMobility</h4>
+                    <ul>
+                        <li>Une application web de recyclage automobile</li>
+                        <li>Technologies : Python, Django</li>
+                    </ul>
+                </div>
+
+                <div class="projet-right">
+                    <h4>Soutien_scolaire</h4>
+                    <ul>
+                        <li>Application web d'encadrement des élèves du primaire</li>
+                        <li>Technologies : Python, Flask</li>
+                    </ul>
+                </div>
+
+                <div class="projet-right">
+                    <h4>Allô_Services</h4>
+                    <ul>
+                        <li>Application web de contact d'artisans ou de service des urgences</li>
+                        <li>Technologies : Python, Flask</li>
+                    </ul>
+                </div>
+
+                <div class="projet-right">
+                    <h4>Ouaga Bureau</h4>
+                    <ul>
+                        <li>Application web de gestion de visites</li>
+                        <li>Technologies : Python, Flask</li>
+                    </ul>
+                </div>
+
+                <div class="projet-right">
+                    <h4>Mini_ERP</h4>
+                    <ul>
+                        <li>Application web de gestion de stock (magasins, boutiques, alimentations)</li>
+                        <li>Technologies : Python, Django</li>
+                    </ul>
+                </div>
+
+                <div class="projet-right">
+                    <h4>StageConnect</h4>
+                    <ul>
+                        <li>Plate-forme de publication et de candidature de stages</li>
+                        <li>Technologies : Python, Flask</li>
+                    </ul>
+                </div>
             </div>
+
+            <div class="section-title">PROJETS ÉLECTRONIQUES</div>
+
+            <div class="projet-subtitle">Sécurité &amp; Alarme</div>
+            <ul class="no-bullets">
+                <li><strong>Centrale d'Alarme de Sécurité</strong> – code secret et affichage sur écran LCD</li>
+                <li><strong>Alarme Anti-Intrusion Multi-Zones</strong> – protection du matériel solaire et des entrepôts</li>
+                <li><strong>Serrure Numérique de Sécurité</strong> – clavier 4x4, LED et buzzer</li>
+            </ul>
+
+            <div class="projet-subtitle">Énergie &amp; Surveillance</div>
+            <ul class="no-bullets">
+                <li><strong>Gestionnaire Intelligent de Mini-Centrale Solaire</strong> – protection de batterie</li>
+                <li><strong>Système de Forage / Château d'Eau</strong> – sécurité « Anti-Marche à Sec »</li>
+            </ul>
+
+            <p class="projet-tech">Technologies : WOKWI, Arduino Uno</p>
 
         </div>
     </main>
